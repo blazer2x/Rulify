@@ -239,7 +239,7 @@ initMaps();
                 RunRule(ruleProp,line_buff,strlen(line_buff),out,i);
                 if (strlen(out)!= 0 )
                 {
-                    fprintf(outputFile,"%s %s\n",out,ruleProp[0].RuleMap[i]);
+                    fprintf(outputFile,"%s\n",out);
                 }
             }
 
