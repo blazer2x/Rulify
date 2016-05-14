@@ -1075,7 +1075,11 @@ int RunRule(rule_struct * ruleProp, char * inString, size_t inStringLen, char * 
                 {
                     char *p1, *p2;
                     if (!outString || !*outString)
+                    {
+                        i++;
                         break;
+                    }
+                        
 
                     for (p1 = outString, p2 = outString + line_len - 1; p2 > p1; ++p1, --p2) {
                         *p1 ^= *p2;
