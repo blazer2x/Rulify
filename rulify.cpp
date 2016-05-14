@@ -585,13 +585,12 @@ int RunRule(rule_struct * ruleProp, char * inString, size_t inStringLen, char * 
                     if (posMap[ruleProp[0].RuleMap[ruleNum][i+1]] > line_len)
                     {   i+=2;
                         continue;}
-                    memcpy(rule_temp,outString,line_len);
                     int value = 0;
                     value =  posMap[ruleProp[0].RuleMap[ruleNum][i+1]];
+                    memmove(outString+value+mem_len,outString+value,line_len-value);
                     memcpy(outString+value,rule_mem,mem_len);
-                    memcpy(outString+value+mem_len,rule_temp+value,line_len-value);
                     line_len +=mem_len;
-                    i =+2;
+                    i+=2;
                     break;
                 }
                 case RULE_MEM_OVERWRITE:
@@ -1079,7 +1078,7 @@ int RunRule(rule_struct * ruleProp, char * inString, size_t inStringLen, char * 
                         i++;
                         break;
                     }
-                        
+
 
                     for (p1 = outString, p2 = outString + line_len - 1; p2 > p1; ++p1, --p2) {
                         *p1 ^= *p2;
